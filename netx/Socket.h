@@ -1,12 +1,13 @@
 #pragma once
+#include <string>
 #include <netinet/in.h>
 
 namespace netx {
     class Socket {
     public:
-        inline Socket();
-        inline ~Socket();
-        explicit Socket(int fileDescriptor);
+        Socket();
+        ~Socket();
+        explicit Socket(const char *ip, const char *port, bool is_server_socket);
 
         int create();
         int bind(addrinfo* addr);
@@ -27,8 +28,14 @@ namespace netx {
     private:
         int fd;
 
+        const char *ip;
+
+        const char *port;
+
         int setNonBlocking();
 
         int setCloseOnExec();
+
+        bool server_socket;
     };
 }

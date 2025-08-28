@@ -5,5 +5,4 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(netx main.cpp
         netx/Socket.h
-        Socket.cpp
-        Socket.h)
+        Socket.cpp)
